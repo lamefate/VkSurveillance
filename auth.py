@@ -27,14 +27,14 @@ class Auth:
     def auth_handler(self):
         # called if 2fa is enabled
         key = input('2fa code: ')
-        remember_device = True
+        remember_device = False
 
         return key, remember_device
 
     def auth_2fa_process(self):
         # auth with 2fa support
         try:
-            vk_session = vk_api.VkApi(self.v_login, self.v_password, auth_handler=self.auth_handler())
+            vk_session = vk_api.VkApi(self.v_login, self.v_password, auth_handler=self.auth_handler)
             vk_session.auth()
             return vk_session.get_api()
         except vk_api.AuthError as error_msg:
