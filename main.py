@@ -12,9 +12,11 @@ class Main:
     def generate_config(self, filename):
         # setting parameters and sections
         config = configparser.ConfigParser()
+        config.add_section('Start')
+        config.set('Start', 'first_run', 'true')
         config.add_section('Auth')
-        config.set('Auth', 'phone', '+7')
-        config.set('Auth', 'password', 'q')
+        config.set('Auth', 'login', 'none')
+        config.set('Auth', 'password', 'none')
 
         # save config to .ini file
         with open(filename, 'w') as config_file:
@@ -31,6 +33,21 @@ class Main:
         print('info: loading config.ini params')
         # read config file
         config = configparser.ConfigParser()
+        config.read(filename)
+
+        # checks if this is the first launch
+        if config['Start']['first_run'] == 'true':
+            input('wait: configure config.ini and then press Enter')
+            config.set('Start', 'first_run', 'false')
+            # save changed first_run state
+            with open(filename, 'w') as config_file:
+                config.write(config_file)
+        elif config['Start']['first_run'] == 'false':
+            print('info: config.ini is already configured, skipped')
+        else:
+            print('error: first_run in config.ini has an invalid value, it should be true/false')
+            quit(0)
+
         config.read(filename)
 
         # return read config
