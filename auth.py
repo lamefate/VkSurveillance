@@ -1,10 +1,9 @@
-from json import dumps, loads
 import vk_api
 
 
 class Auth:
     def __init__(self, params):
-        self.v_login = params['Auth']['phone']
+        self.v_login = params['Auth']['login']
         self.v_password = params['Auth']['password']
         self.api = self.fa_enabled()
 
@@ -21,7 +20,7 @@ class Auth:
             self.fa_enabled()
 
         response = api.account.getProfileInfo(v=5.124)
-        print(response)
+        print('info: using account -> {} {}, id{}'.format(response['first_name'], response['last_name'], response['id']))
 
         return api
 
