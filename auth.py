@@ -39,7 +39,8 @@ class Auth:
             vk_session.auth()
             return vk_session.get_api()
         except vk_api.AuthError as error_msg:
-            print(error_msg)
+            print('error: {}'.format(error_msg))
+            quit(0)
 
     def auth_process(self):
         # auth without 2fa support
@@ -48,4 +49,5 @@ class Auth:
             vk_session.auth()
             return vk_session.get_api()
         except vk_api.AuthError as error_msg:
-            print(error_msg)
+            print('error: '.format(error_msg))
+            quit(0)
