@@ -22,7 +22,7 @@ class Auth:
 
         # first api call
         response = api.account.getProfileInfo(v=5.124)
-        print('info: using account -> {} {}, id{}'.format(response['first_name'], response['last_name'], response['id']))
+        print(f"info: using account -> {response['first_name']} {response['last_name']}, id{response['id']}")
 
         return api
 
@@ -49,4 +49,3 @@ class Auth:
             return vk_session.get_api()
         except vk_api.AuthError as error_msg:
             print(error_msg)
-
