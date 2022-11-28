@@ -13,3 +13,11 @@
 + слежка за новыми постами
 + слежка за комментариями
 + слежка за онлайном пользователя и друзей
+
+**ToDo List**:
+- [x] Config generate/load
+- [x] Auth simple/with 2fa
+- [ ] Friends surveillance
+- [ ] Posts surveillance
+- [ ] Comments surveillance
+- [ ] User online & friends online surveillance~~~~
