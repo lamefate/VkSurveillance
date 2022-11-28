@@ -8,6 +8,7 @@ class Auth:
         self.api = self.fa_enabled()
 
     def fa_enabled(self, api=0):
+        # if 2fa enabled - auth 2fa, else - auth
         fa_status = input('is 2fa enabled [y/n]: ')
         if fa_status.lower() == 'y':
             print('info: authorization method with 2fa')
@@ -19,6 +20,7 @@ class Auth:
             print('error: incorrectly entered answer, try again')
             self.fa_enabled()
 
+        # first api call
         response = api.account.getProfileInfo(v=5.124)
         print('info: using account -> {} {}, id{}'.format(response['first_name'], response['last_name'], response['id']))
 
