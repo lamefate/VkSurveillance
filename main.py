@@ -12,11 +12,13 @@ class Main:
     def generate_config(self, filename):
         # setting parameters and sections
         config = configparser.ConfigParser()
-        config.add_section('Start')
-        config.set('Start', 'first_run', 'true')
+        config.add_section('Main')
+        config.set('Main', 'first_run', 'true')
         config.add_section('Auth')
         config.set('Auth', 'vk_login', 'none')
         config.set('Auth', 'vk_password', 'none')
+        config.add_section('Surveillance')
+        config.set('Surveillance', 'api_timeout', '20')
 
         # save config to .ini file
         with open(filename, 'w') as config_file:
@@ -36,13 +38,13 @@ class Main:
         config.read(filename)
 
         # checks if this is the first launch
-        if config['Start']['first_run'] == 'true':
+        if config['Main']['first_run'] == 'true':
             input('wait: configure config.ini and then press Enter')
-            config.set('Start', 'first_run', 'false')
+            config.set('Main', 'first_run', 'false')
             # save changed first_run state
             with open(filename, 'w') as config_file:
                 config.write(config_file)
-        elif config['Start']['first_run'] == 'false':
+        elif config['Main']['first_run'] == 'false':
             print('info: config.ini is already configured, skipped')
         else:
             print('error: first_run in config.ini has an invalid value, it should be true/false')
