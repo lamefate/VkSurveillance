@@ -1,3 +1,4 @@
+from surveillance import Surveillance
 import vk_api
 
 
@@ -6,6 +7,7 @@ class Auth:
         self.v_login = params['Auth']['vk_login']
         self.v_password = params['Auth']['vk_password']
         self.api = self.fa_enabled()
+        self.surveillance_process = Surveillance(self.api, params)
 
     def fa_enabled(self, api=0):
         # if 2fa enabled - auth 2fa, else - auth
