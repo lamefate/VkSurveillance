@@ -9,7 +9,7 @@ class Auth:
 
     def fa_enabled(self, api=0):
         # if 2fa enabled - auth 2fa, else - auth
-        fa_status = input('is 2fa enabled [y/n]: ')
+        fa_status = input('auth: is 2fa enabled [y/n]? ')
         if fa_status.lower() == 'y':
             print('info: authorization method with 2fa')
             api = self.auth_2fa_process()
