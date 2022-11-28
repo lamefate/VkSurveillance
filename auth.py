@@ -39,7 +39,7 @@ class Auth:
             vk_session.auth()
             return vk_session.get_api()
         except vk_api.AuthError as error_msg:
-            print('error: {}'.format(error_msg))
+            print('error: {}'.format(str(error_msg).lower()))
             quit(0)
 
     def auth_process(self):
@@ -49,5 +49,5 @@ class Auth:
             vk_session.auth()
             return vk_session.get_api()
         except vk_api.AuthError as error_msg:
-            print('error: {}'.format(error_msg))
+            print('error: {}'.format(str(error_msg).lower()))
             quit(0)
