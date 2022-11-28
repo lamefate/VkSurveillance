@@ -15,8 +15,8 @@ class Main:
         config.add_section('Start')
         config.set('Start', 'first_run', 'true')
         config.add_section('Auth')
-        config.set('Auth', 'login', 'none')
-        config.set('Auth', 'password', 'none')
+        config.set('Auth', 'vk_login', 'none')
+        config.set('Auth', 'vk_password', 'none')
 
         # save config to .ini file
         with open(filename, 'w') as config_file:

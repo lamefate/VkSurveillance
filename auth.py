@@ -3,8 +3,8 @@ import vk_api
 
 class Auth:
     def __init__(self, params):
-        self.v_login = params['Auth']['login']
-        self.v_password = params['Auth']['password']
+        self.v_login = params['Auth']['vk_login']
+        self.v_password = params['Auth']['vk_password']
         self.api = self.fa_enabled()
 
     def fa_enabled(self, api=0):
@@ -24,10 +24,9 @@ class Auth:
 
         return api
 
-    def auth_handler(self):
+    def auth_handler(self, remember_device=True):
         # called if 2fa is enabled
         key = input('2fa code: ')
-        remember_device = False
 
         return key, remember_device
 
